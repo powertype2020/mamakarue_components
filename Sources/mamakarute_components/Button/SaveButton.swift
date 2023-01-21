@@ -11,12 +11,21 @@ public struct SaveButton: View {
     
     public enum SaveButtonColor: CaseIterable {
         /// メイン.
-        case main = Color.pink
+        case main
         /// セカンダリ.
-        case secondry = Color.gray
+        case secondry
+        
+        var color: Color {
+            switch self {
+            case .main:
+                return Color.pink
+            case .secondry:
+                return Color.gray
+            }
+        }
     }
     
-    public enum SaveButtonFrameSize: CGSize {
+    public enum SaveButtonFrameSize: CaseIterable {
         /// 大.
         case large
         /// 中.
