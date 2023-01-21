@@ -15,32 +15,12 @@ public struct SaveButton: View {
         /// セカンダリ.
         case secondry
         
-        var color: Color {
+        public var color: Color {
             switch self {
             case .main:
                 return Color.pink
             case .secondry:
                 return Color.gray
-            }
-        }
-    }
-    
-    public enum SaveButtonFrameSize: CaseIterable {
-        /// 大.
-        case large
-        /// 中.
-        case medium
-        /// 小.
-        case small
-        
-        var frame: CGSize {
-            switch self {
-            case .large:
-                return CGSize(width: 200, height: 50)
-            case .medium:
-                return CGSize(width: 100, height: 25)
-            case .small:
-                return CGSize(width: 50, height: 12.5)
             }
         }
     }
@@ -57,42 +37,24 @@ public struct SaveButton: View {
     /// 保存ボタンのラベル.
     private let label: String
     /// 保存ボタンのカラー.
-    private let color: SaveButtonColor
-    /// 保存ボタンのフレームサイズ.
-    private let frameSize: SaveButtonSize
-    /// 保存ボタンテキストのサイズ
-    private let textSize: SaveButtonTextSize
+    private let butoonColor: SaveButtonColor
     /// 保存ボタンのアクション.
     private let action: () -> Void
     
-    @Environment(\.isEnabled) var isEnabled
-    
     public init(
         label: String,
-        color: SaveButtonColor,
-        frameSize: SaveButtonSize,
-        textSize: SaveButtonTextSize,
+        buttonColor: SaveButtonColor,
         action: @escaping () -> Void
     ) {
         self.label = label
-        self.color = color
-        self.frameSize = frameSize
-        self.textSize = textSize
+        self.butoonColor = buttonColor
         self.action = action
     }
     
-    var body: some View {
+    public var body: some View {
         Button(action: action) {
             Text(verbatim: label)
-                .foregroundColor(color)
-                .frame(size)
+                .foregroundColor(butoonColor.color)
         }
     }
 }
-
-struct SaveButton_Previews: PreviewProvider {
-    static var previews: some View {
-        SaveButton()
-    }
-}
-
