@@ -16,13 +16,24 @@ public struct SaveButton: View {
         case secondry = Color.gray
     }
     
-    public enum SaveButtonSize: CGSize {
+    public enum SaveButtonFrameSize: CGSize {
         /// 大.
-        case large = CGSize(width: 200, height: 50)
+        case large
         /// 中.
-        case medium = CGSize(width: 100, height: 25)
+        case medium
         /// 小.
-        case small = CGSize(width: 50, height: 12.5)
+        case small
+        
+        var frame: CGSize {
+            switch self {
+            case .large:
+                return CGSize(width: 200, height: 50)
+            case .medium:
+                return CGSize(width: 100, height: 25)
+            case .small:
+                return CGSize(width: 50, height: 12.5)
+            }
+        }
     }
     
     public enum SaveButtonTextSize: CGFloat {
